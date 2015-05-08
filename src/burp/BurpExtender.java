@@ -36,7 +36,7 @@ public class BurpExtender implements IBurpExtender, IScannerCheck {
     private static final Pattern ASP_STACK_TRACE = Pattern.compile("[A-Za-z\\.]+\\(([A-Za-z0-9, ]+)?\\) \\+[0-9]+");
     private static final Pattern PERL_STACK_TRACE = Pattern.compile("at (\\/[A-Za-z0-9\\.]+)*\\.pm line [0-9]+");
     private static final Pattern PYTHON_STACK_TRACE = Pattern.compile("File \"[A-Za-z0-9\\-_\\./]*\", line [0-9]+, in");
-    
+    private static final Pattern RUBY_LINE_NUMBER = Pattern.compile("\\.rb:[0-9]+:in");
     
     private static final List<MatchRule> rules = new ArrayList<MatchRule>();
     static {
@@ -50,6 +50,7 @@ public class BurpExtender implements IBurpExtender, IScannerCheck {
 	rules.add(new MatchRule(ASP_STACK_TRACE, 0, "ASP.Net"));
 	rules.add(new MatchRule(PERL_STACK_TRACE, 0, "Perl"));
 	rules.add(new MatchRule(PYTHON_STACK_TRACE, 0, "Python"));
+	rules.add(new MatchRule(RUBY_LINE_NUMBER, 0, "Ruby"));
     }
     
     

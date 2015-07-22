@@ -73,9 +73,10 @@
     -->
     
     <target name="-post-jar">
-	<jar jarfile="dist/${application.title}-combined.jar">
+	<echo message="Packaging ${application.title} into a single JAR at ${application.title}-fat.jar"/>
+	<jar jarfile="dist/${application.title}-fat.jar">
 	    <zipfileset src="${dist.jar}" />
-	    <!--<zipfileset src="lib/commons-collections-3.2.1.jar" excludes="META-INF/*" />-->
+	    <zipgroupfileset dir="dist/lib" includes="*.jar" excludes="META-INF/*"/>
 	</jar>
     </target>
 

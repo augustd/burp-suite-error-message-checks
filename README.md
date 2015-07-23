@@ -10,3 +10,5 @@ This is a Burp Suite 1.5+ extension to detect error messages in running applicat
 ```
 
 Often error messages may not be noticed during the normal course of testing. This extension is designed to passively detect error messages, even during scanning, spidering, etc.
+
+Note: You will need to have the Burp Suite Utils library in your CLASSPATH in order to build this project: https://github.com/augustd/burp-suite-utils

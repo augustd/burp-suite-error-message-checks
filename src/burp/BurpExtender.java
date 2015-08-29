@@ -1,5 +1,6 @@
 package burp;
 
+import com.codemagi.burp.MatchRule;
 import com.codemagi.burp.PassiveScan;
 import com.codemagi.burp.ScanIssue;
 import com.codemagi.burp.ScanIssueConfidence;
@@ -30,26 +31,24 @@ public class BurpExtender extends PassiveScan {
 	extensionName = "Error Message Checks";
 	
 	//create match rules
-	rules.add(new com.codemagi.burp.MatchRule(PHP_ON_LINE, 0, "PHP"));
-	rules.add(new com.codemagi.burp.MatchRule(PHP_HTML_ON_LINE, 0, "PHP"));
-	rules.add(new com.codemagi.burp.MatchRule(PHP_FATAL_ERROR, 0, "PHP"));
-	rules.add(new com.codemagi.burp.MatchRule(PHP_LINE_NUMBER, 0, "PHP"));
-	rules.add(new com.codemagi.burp.MatchRule(MSSQL_ERROR, 0, "Microsoft SQL Server"));
-	rules.add(new com.codemagi.burp.MatchRule(MYSQL_SYNTAX_ERROR, 0, "MySQL"));
-	rules.add(new com.codemagi.burp.MatchRule(JAVA_LINE_NUMBER, 0, "Java"));
-	rules.add(new com.codemagi.burp.MatchRule(JAVA_COMPILED_CODE, 0, "Java"));
-	rules.add(new com.codemagi.burp.MatchRule(ASP_STACK_TRACE, 0, "ASP.Net"));
-	rules.add(new com.codemagi.burp.MatchRule(PERL_STACK_TRACE, 0, "Perl"));
-	rules.add(new com.codemagi.burp.MatchRule(PYTHON_STACK_TRACE, 0, "Python"));
-	rules.add(new com.codemagi.burp.MatchRule(RUBY_LINE_NUMBER, 0, "Ruby"));
+	addMatchRule(new MatchRule(PHP_ON_LINE, 0, "PHP"));
+	addMatchRule(new MatchRule(PHP_HTML_ON_LINE, 0, "PHP"));
+	addMatchRule(new MatchRule(PHP_FATAL_ERROR, 0, "PHP"));
+	addMatchRule(new MatchRule(PHP_LINE_NUMBER, 0, "PHP"));
+	addMatchRule(new MatchRule(MSSQL_ERROR, 0, "Microsoft SQL Server"));
+	addMatchRule(new MatchRule(MYSQL_SYNTAX_ERROR, 0, "MySQL"));
+	addMatchRule(new MatchRule(JAVA_LINE_NUMBER, 0, "Java"));
+	addMatchRule(new MatchRule(JAVA_COMPILED_CODE, 0, "Java"));
+	addMatchRule(new MatchRule(ASP_STACK_TRACE, 0, "ASP.Net"));
+	addMatchRule(new MatchRule(PERL_STACK_TRACE, 0, "Perl"));
+	addMatchRule(new MatchRule(PYTHON_STACK_TRACE, 0, "Python"));
+	addMatchRule(new MatchRule(RUBY_LINE_NUMBER, 0, "Ruby"));
     }
 
-    @Override
     protected String getIssueName() {
 	return ISSUE_NAME;
     }
 
-    @Override
     protected String getIssueDetail(List<com.codemagi.burp.ScannerMatch> matches) {
 	com.codemagi.burp.ScannerMatch firstMatch = matches.get(0);
 
@@ -63,9 +62,10 @@ public class BurpExtender extends PassiveScan {
     @Override
     protected ScanIssue getScanIssue(IHttpRequestResponse baseRequestResponse, List<com.codemagi.burp.ScannerMatch> matches, List<int[]> startStop) {
 	return new ScanIssue(
-		baseRequestResponse.getHttpService(), 
-		helpers.analyzeRequest(baseRequestResponse).getUrl(), 
-		new IHttpRequestResponse[]{callbacks.applyMarkers(baseRequestResponse, null, startStop)}, 
+		baseRequestResponse, 
+		helpers,
+		callbacks, 
+		startStop, 
 		getIssueName(), 
 		getIssueDetail(matches), 
 		ScanIssueSeverity.MEDIUM.getName(), 

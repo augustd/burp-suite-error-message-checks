@@ -5,6 +5,7 @@ import com.codemagi.burp.PassiveScan;
 import com.codemagi.burp.ScanIssue;
 import com.codemagi.burp.ScanIssueConfidence;
 import com.codemagi.burp.ScanIssueSeverity;
+import com.codemagi.burp.ScannerMatch;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -23,10 +24,7 @@ public class BurpExtender extends PassiveScan {
     public static final String ISSUE_NAME = "Detailed Error Messages Revealed";
     
     @Override
-    protected void initialize() {
-	//call the superclass initializer
-	super.initialize();
-	
+    protected void initPassiveScan() {
 	//set the extension Name
 	extensionName = "Error Message Checks";
 	
@@ -60,7 +58,7 @@ public class BurpExtender extends PassiveScan {
     }
     
     @Override
-    protected ScanIssue getScanIssue(IHttpRequestResponse baseRequestResponse, List<com.codemagi.burp.ScannerMatch> matches, List<int[]> startStop) {
+    protected ScanIssue getScanIssue(IHttpRequestResponse baseRequestResponse, List<ScannerMatch> matches, List<int[]> startStop) {
 	return new ScanIssue(
 		baseRequestResponse, 
 		helpers,

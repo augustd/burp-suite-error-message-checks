@@ -10,3 +10,7 @@ You have an error in your SQL syntax; check the manual that corresponds to your 
 at (\/[A-Za-z0-9\.]+)*\.pm line [0-9]+	0	Perl	Low	Certain
 File \"[A-Za-z0-9\-_\./]*\", line [0-9]+, in	0	Python	Low	Certain
 \.rb:[0-9]+:in	0	Ruby	Low	Certain
+Exception of type	0	ASP.Net	Low	Certain
+--- End of inner exception stack trace ---	0	ASP.Net	Low	Certain
+Microsoft OLE DB Provider	0	ASP.Net	Low	Certain
+Error ([\d-]+) \([\dA-F]+\)	0	ASP.Net	Low	Certain

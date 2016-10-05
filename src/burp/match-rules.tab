@@ -14,3 +14,4 @@ Exception of type	0	ASP.Net	Low	Certain
 --- End of inner exception stack trace ---	0	ASP.Net	Low	Certain
 Microsoft OLE DB Provider	0	ASP.Net	Low	Certain
 Error ([\d-]+) \([\dA-F]+\)	0	ASP.Net	Low	Certain
+at ([a-zA-Z0-9]*\.)*([a-zA-Z0-9]*)\([a-zA-Z0-9, ]*\)	0	ASP.Net	Low	Certain

@@ -1,0 +1,21 @@
+Fatal error: Call to a member function getId() on a non-object in /var/www/docroot/application/modules/controllers/ModalController.php on line 609
+<b>Warning</b>: Invalid argument supplied for foreach() in <b>/home/content/.../admin/model/report/sale.php</b> on line <b>87</b>
+Fatal error: Undefined class constant 'PRODUCT' in 
+OLE DB provider "MSDASQL" for linked server "INFORMIX_LIBRARY" returned message "[Microsoft][ODBC Driver Manager] Driver's SQLSetConnectAttr failed".
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Details (title, first, last, NRIC, po' at line 1
+[SEVERE] at net.minecraft.server.World.tickEntities(World.java:1146)
+at com.aptrix.pluto.cmpnt.FormatterCmpnt.applyMicroTemplate(FormatterCmpnt.java(Compiled Code))
+at com.aptrix.pluto.cmpnt.FormatterCmpnt.resolveNode(FormatterCmpnt.java(Inlined Compiled Code))
+at sun.reflect.GeneratedMethodAccessor3159.invoke(Unknown Source)
+System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint) +2071
+c() called at [/tmp/include.php:10]
+Use of uninitialized value in string eq at /Library/Perl/5.8.6/WWW/Mechanize.pm line 695
+Traceback (most recent call last): 
+  File "/test123.py", line 26, in <module>
+from /usr/lib/ruby/vendor_ruby/vagrant/bundler.rb:231:in `internal_install'
+Exception of type 'System.Windows.Forms.AxHost+InvalidActiveXStateException' was thrown.
+Value:'conn.ServerVersion' threw an exception of type 'System.InvalidOperationException' string {System.InvalidOperationException}
+--- End of inner exception stack trace ---
+Microsoft OLE DB Provider for ODBC Drivers error '80004005'
+Error 1123-4567 (1a2f2a4f)
+at some.class.Something(String this, int that)

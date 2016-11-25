@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/augustd/burp-suite-error-message-checks.svg?branch=master)](https://travis-ci.org/augustd/burp-suite-error-message-checks)
+
 # burp-suite-error-message-checks
 This Burp Suite 1.5+ extension passively detects server error messages in running applications. Some examples:
 

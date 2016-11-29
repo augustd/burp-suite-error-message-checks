@@ -8,6 +8,7 @@ at com.aptrix.pluto.cmpnt.FormatterCmpnt.applyMicroTemplate(FormatterCmpnt.java(
 at com.aptrix.pluto.cmpnt.FormatterCmpnt.resolveNode(FormatterCmpnt.java(Inlined Compiled Code))
 at sun.reflect.GeneratedMethodAccessor3159.invoke(Unknown Source)
 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint) +2071
+"Message":"Invalid web service call
 c() called at [/tmp/include.php:10]
 Use of uninitialized value in string eq at /Library/Perl/5.8.6/WWW/Mechanize.pm line 695
 Traceback (most recent call last): 

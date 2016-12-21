@@ -18,3 +18,5 @@ Exception of type	0	ASP.Net	Low	Certain
 Microsoft OLE DB Provider	0	ASP.Net	Low	Certain
 Error ([\d-]+) \([\dA-Fa-f]+\)	0	ASP.Net	Low	Certain
 at ([a-zA-Z0-9]*\.)*([a-zA-Z0-9]*)\([a-zA-Z0-9, ]*\)	0	ASP.Net	Low	Certain
+([A-Za-z\.]+)Exception: 	0	ASP.Net	Low	Certain
+in [A-Za-z]:\\([A-Za-z_]+\\)+[A-Za-z0-9_\-]+\.cs:line [\d]+	0	ASP.Net	Low	Certain

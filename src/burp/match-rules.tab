@@ -6,6 +6,7 @@ Fatal error:	0	PHP	Low	Certain
 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near	0	MySQL	Medium	Certain
 \.java:[0-9]+	0	Java	Low	Certain
 \.java\((Inlined )?Compiled Code\)	0	Java	Low	Certain
+nested exception is	0	Java	Low	Firm
 [A-Za-z\.]+\(([A-Za-z0-9, ]+)?\) \+[0-9]+	0	ASP.Net	Low	Certain
 at (\/[A-Za-z0-9\.]+)*\.pm line [0-9]+	0	Perl	Low	Certain
 File \"[A-Za-z0-9\-_\./]*\", line [0-9]+, in	0	Python	Low	Certain

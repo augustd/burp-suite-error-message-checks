@@ -35,7 +35,7 @@ public class BurpExtender extends PassiveScan {
         //set the settings namespace
         settingsNamespace = "EMC_";
 	
-	rulesTable = new RuleTableComponent(this, callbacks, "https://raw.githubusercontent.com/augustd/burp-suite-error-message-checks/master/src/burp/match-rules.tab");
+	rulesTable = new RuleTableComponent(this, callbacks, "https://raw.githubusercontent.com/augustd/burp-suite-error-message-checks/master/src/main/resources/burp/match-rules.tab");
         
         mTab = new BurpSuiteTab(extensionName, callbacks);
         mTab.addComponent(rulesTable);

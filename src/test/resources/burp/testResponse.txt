@@ -20,5 +20,9 @@ Value:'conn.ServerVersion' threw an exception of type 'System.InvalidOperationEx
 Microsoft OLE DB Provider for ODBC Drivers error '80004005'
 Error 1123-4567 (1a2f2a4f)
 at some.class.Something(String this, int that)
+at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+at System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object&amp; executeResult)
 System.Web.Services.Protocols.SoapException: Web Exception ---&gt; System.Exception:
 in c:\inetpub\wwwroot\Portal\DSPII\App_Code\DCSDownloadService.cs:line 866
+in c:\downloads\AltoroMutual_v6\website\bank\login.aspx.cs:line 68
+Syntax error in string in query expression 'username =

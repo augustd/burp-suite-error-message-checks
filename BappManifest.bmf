@@ -1,7 +1,7 @@
 Uuid: 4f01db4b668c4126a68e4673df796f0f
 ExtensionType: 1
 Name: Error Message Checks
-ScreenVersion: 1.2
+ScreenVersion: 2.0.0
 SerialVersion: 3
 MinPlatformVersion: 0
 ProOnly: True

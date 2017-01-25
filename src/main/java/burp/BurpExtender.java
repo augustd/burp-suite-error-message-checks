@@ -7,6 +7,7 @@ import com.codemagi.burp.ScanIssueConfidence;
 import com.codemagi.burp.ScanIssueSeverity;
 import com.codemagi.burp.ScannerMatch;
 import com.monikamorrow.burp.BurpSuiteTab;
+import com.monikamorrow.burp.ToolsScopeComponent;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.List;
@@ -28,6 +29,7 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 	public static final String ISSUE_NAME = "Detailed Error Messages Revealed";
 
 	protected RuleTableComponent rulesTable;
+	protected ToolsScopeComponent toolsScope;
 	protected BurpSuiteTab mTab;
 
 	@Override
@@ -42,6 +44,14 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 		rulesTable = new RuleTableComponent(this, callbacks, "https://raw.githubusercontent.com/augustd/burp-suite-error-message-checks/master/src/main/resources/burp/match-rules.tab");
 		mTab = new BurpSuiteTab(extensionName, callbacks);
 		mTab.addComponent(rulesTable);
+		
+		toolsScope = new ToolsScopeComponent(callbacks);
+		toolsScope.setEnabledToolConfig(IBurpExtenderCallbacks.TOOL_PROXY, false); 
+		toolsScope.setToolDefault(IBurpExtenderCallbacks.TOOL_PROXY, false);
+		toolsScope.setToolDefault(IBurpExtenderCallbacks.TOOL_SCANNER, true);
+		toolsScope.setToolDefault(IBurpExtenderCallbacks.TOOL_REPEATER, true);
+		toolsScope.setToolDefault(IBurpExtenderCallbacks.TOOL_INTRUDER, true);
+		mTab.addComponent(toolsScope);
 		
 		//register this extension as an HTTP listener
 		callbacks.registerHttpListener(this);
@@ -107,7 +117,7 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 
 	@Override
 	public void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResponse messageInfo) {
-		if (!messageIsRequest && toolFlag == IBurpExtenderCallbacks.TOOL_SCANNER) {
+		if (!messageIsRequest && toolsScope.isToolSelected(toolFlag)) {
 			//first get the scan issues
 			List<IScanIssue> issues = runPassiveScanChecks(messageInfo);
 

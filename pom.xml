@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.codemagi</groupId>
     <artifactId>burp-suite-error-message-checks</artifactId>
-    <version>1.0</version>
+    <version>2.0.0</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.codemagi</groupId>
             <artifactId>burp-suite-utils</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.4</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

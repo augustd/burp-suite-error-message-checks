@@ -4,9 +4,11 @@ Fatal error:	0	PHP	Low	Certain
 \.php:[0-9]+	0	PHP	Low	Certain
 \[(ODBC SQL Server Driver|SQL Server|ODBC Driver Manager)\]	0	Microsoft SQL Server	Low	Certain
 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near	0	MySQL	Medium	Certain
+Illegal mix of collations \([\w\s\,]+\) and \([\w\s\,]+\) for operation	0	MySQL	Medium	Certain
 \.java:[0-9]+	0	Java	Low	Certain
 \.java\((Inlined )?Compiled Code\)	0	Java	Low	Certain	2
 \.invoke\(Unknown Source\)	0	Java	Low	Certain
+nested exception is	0	Java	Low	Firm
 [A-Za-z\.]+\(([A-Za-z0-9, ]+)?\) \+[0-9]+	0	ASP.Net	Low	Certain
 "Message":"Invalid web service call	0	ASP.Net	Low	Certain
 at (\/[A-Za-z0-9\.]+)*\.pm line [0-9]+	0	Perl	Low	Certain
@@ -17,6 +19,7 @@ Exception of type	0	ASP.Net	Low	Certain
 --- End of inner exception stack trace ---	0	ASP.Net	Low	Certain
 Microsoft OLE DB Provider	0	ASP.Net	Low	Certain
 Error ([\d-]+) \([\dA-Fa-f]+\)	0	ASP.Net	Low	Certain
-at ([a-zA-Z0-9]*\.)*([a-zA-Z0-9]*)\([a-zA-Z0-9, ]*\)	0	ASP.Net	Low	Certain
+at ([a-zA-Z0-9_]*\.)*([a-zA-Z0-9_]*)\([a-zA-Z0-9, \[\]\&\;]*\)	0	ASP.Net	Low	Certain 3
 ([A-Za-z\.]+)Exception: 	0	ASP.Net	Low	Certain
-in [A-Za-z]:\\([A-Za-z_]+\\)+[A-Za-z0-9_\-]+\.cs:line [\d]+	0	ASP.Net	Low	Certain
+in [A-Za-z]:\\([A-Za-z0-9_]+\\)+[A-Za-z0-9_\-]+(\.aspx)?\.cs:line [\d]+	0	ASP.Net	Low	Certain	2
+Syntax error in string in query expression	0	ASP.Net	Medium	Certain

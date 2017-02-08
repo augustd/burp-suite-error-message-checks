@@ -2,10 +2,10 @@ Uuid: 4f01db4b668c4126a68e4673df796f0f
 ExtensionType: 1
 Name: Error Message Checks
 ScreenVersion: 2.0.0
-SerialVersion: 3
+SerialVersion: 4
 MinPlatformVersion: 0
 ProOnly: True
 Author: August Detlefsen
 ShortDescription: Passively detects detailed server error messages.
-EntryPoint: target/burp-suite-error-message-checks-1.0.jar
+EntryPoint: target/burp-suite-error-message-checks-2.0.0.jar
 BuildCommand: mvn package -DskipTests=true -Dmaven.javadoc.skip=true -B

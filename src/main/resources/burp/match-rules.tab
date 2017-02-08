@@ -3,6 +3,7 @@
 Fatal error:	0	PHP	Low	Certain
 \.php:[0-9]+	0	PHP	Low	Certain
 \[(ODBC SQL Server Driver|SQL Server|ODBC Driver Manager)\]	0	Microsoft SQL Server	Low	Certain
+Cannot initialize the data source object of OLE DB provider "[\w]*" for linked server "[\w]*"	0	Microsoft SQL Server	Low	Certain
 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near	0	MySQL	Medium	Certain
 Illegal mix of collations \([\w\s\,]+\) and \([\w\s\,]+\) for operation	0	MySQL	Medium	Certain
 \.java:[0-9]+	0	Java	Low	Certain

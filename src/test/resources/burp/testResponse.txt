@@ -2,6 +2,7 @@ Fatal error: Call to a member function getId() on a non-object in /var/www/docro
 <b>Warning</b>: Invalid argument supplied for foreach() in <b>/home/content/.../admin/model/report/sale.php</b> on line <b>87</b>
 Fatal error: Undefined class constant 'PRODUCT' in 
 OLE DB provider "MSDASQL" for linked server "INFORMIX_LIBRARY" returned message "[Microsoft][ODBC Driver Manager] Driver's SQLSetConnectAttr failed".
+Cannot initialize the data source object of OLE DB provider "MSDASQL" for linked server "INFORMIX_LIBRARY".
 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Details (title, first, last, NRIC, po' at line 1
 <p>Illegal mix of collations (latin1_swedish_ci ,IMPLICIT) and (utf8_general_ci ,COERCIBLE) for operation ’=’</p>
 [SEVERE] at net.minecraft.server.World.tickEntities(World.java:1146)

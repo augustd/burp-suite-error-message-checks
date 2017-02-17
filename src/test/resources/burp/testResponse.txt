@@ -28,3 +28,4 @@ System.Web.Services.Protocols.SoapException: Web Exception ---&gt; System.Except
 in c:\inetpub\wwwroot\Portal\DSPII\App_Code\DCSDownloadService.cs:line 866
 in c:\downloads\AltoroMutual_v6\website\bank\login.aspx.cs:line 68
 Syntax error in string in query expression 'username =
+,\"scala.Option.map(Option.scala:146)\"

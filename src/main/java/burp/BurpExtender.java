@@ -1,5 +1,6 @@
 package burp;
 
+import com.codemagi.burp.MatchRule;
 import com.codemagi.burp.PassiveScan;
 import com.codemagi.burp.RuleTableComponent;
 import com.codemagi.burp.ScanIssue;
@@ -67,7 +68,14 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 		StringBuilder description = new StringBuilder(matches.size() * 256);
 		description.append("The application displays detailed error messages when unhandled ").append(firstMatch.getType()).append(" exceptions occur.<br>");
 		description.append("Detailed technical error messages can allow an adversary to gain information about the application and database that could be used to conduct further attacks.");
-
+                description.append("The following expressions were matched in the HTTP response: <ul>");
+                for (ScannerMatch match : matches) {
+                    MatchRule rule = match.getRule();
+                    if (rule != null) {
+                        description.append("<li>").append(rule.getPattern().toString()).append("</li>");
+                    }
+                }
+                description.append("</ul>");
 		return description.toString();
 	}
 

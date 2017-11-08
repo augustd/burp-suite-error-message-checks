@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 /**
  * Burp Extender to find instances of applications revealing detailed error messages
@@ -69,11 +70,10 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 		description.append("The application displays detailed error messages when unhandled ").append(firstMatch.getType()).append(" exceptions occur.<br>");
 		description.append("Detailed technical error messages can allow an adversary to gain information about the application and database that could be used to conduct further attacks.");
                 description.append("The following expressions were matched in the HTTP response: <ul>");
-                for (ScannerMatch match : matches) {
-                    MatchRule rule = match.getRule();
-                    if (rule != null) {
-                        description.append("<li>").append(rule.getPattern().toString()).append("</li>");
-                    }
+                
+                Set<Pattern> distinctPatterns = getDistinctPatterns(matches);
+                for (Pattern pattern : distinctPatterns) {
+                    description.append("<li>").append(pattern.toString()).append("</li>");
                 }
                 description.append("</ul>");
 		return description.toString();
@@ -157,5 +157,16 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 			}
 		}
 	}
+
+    private Set<Pattern> getDistinctPatterns(List<ScannerMatch> matches) {
+        Set<Pattern> output = new HashSet<>();
+        for (ScannerMatch match : matches) {
+            MatchRule rule = match.getRule();
+            if (rule != null) {
+                output.add(rule.getPattern());
+            }
+        }
+        return output;
+    }
 
 }

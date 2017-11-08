@@ -42,7 +42,7 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 		settingsNamespace = "EMC_";
 
 		//Create the GUI
-		rulesTable = new RuleTableComponent(this, callbacks, "https://raw.githubusercontent.com/augustd/burp-suite-error-message-checks/master/src/main/resources/burp/match-rules.tab");
+		rulesTable = new RuleTableComponent(this, callbacks, "https://raw.githubusercontent.com/augustd/burp-suite-error-message-checks/master/src/main/resources/burp/match-rules.tab", "burp/match-rules.tab");
 		mTab = new BurpSuiteTab(extensionName, callbacks);
 		mTab.addComponent(rulesTable);
 		

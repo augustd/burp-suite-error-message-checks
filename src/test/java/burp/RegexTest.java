@@ -31,6 +31,7 @@ public class RegexTest {
 
     List<MatchRule> matchRules = new ArrayList<>();
     String testResponse;
+    String falsePositives;
     
     @BeforeClass
     public static void setUpClass() throws Exception {
@@ -42,7 +43,8 @@ public class RegexTest {
 
     @Before
     public void setUp() throws Exception {
-        loadTestResponse();
+        testResponse = loadTestResponse("burp/testResponse.txt");
+        falsePositives = loadTestResponse("burp/falsePositives.txt");
         testLoadMatchRules();
     }
 
@@ -84,6 +86,32 @@ public class RegexTest {
         
         System.out.println(String.format("Found %d matches out of %d", matchCount, matchRules.size()));
         assertEquals(matchCount, matchRules.size());
+    }
+    
+    @Test
+    public void testFalsePositives() {
+        System.out.println("***** testFalsePositives *****");
+        
+        int matchCount = 0;
+        
+        for (MatchRule rule : matchRules) {
+            Matcher matcher = rule.getPattern().matcher(falsePositives);
+            int foundMatches = 0;
+            while (matcher.find()) {
+                foundMatches++;
+            }
+            
+            System.out.println("Testing rule: " + rule.getPattern() + " matches: " + foundMatches);
+            
+	    if (foundMatches >= 1) { 
+                matchCount++;
+            } else {
+                System.out.println("Unable to find match for: " + rule.getPattern());
+            }
+        }
+        
+        System.out.println(String.format("Found %d matches out of %d", matchCount, matchRules.size()));
+        assertEquals(matchCount, 0);
     }
     
     /**
@@ -141,22 +169,24 @@ public class RegexTest {
     /**
      * Load match rules from a file
      */
-    private boolean loadTestResponse() throws URISyntaxException {
+    private String loadTestResponse(String url) throws URISyntaxException {
+        StringBuilder output = new StringBuilder();
+        
 	//load match rules from file
 	try {
 	    //read match rules from the stream
             Class clazz = getClass();
-            URI path = clazz.getClassLoader().getResource("burp/testResponse.txt").toURI();
+            URI path = clazz.getClassLoader().getResource(url).toURI();
             File f = new File(path);
 	    BufferedReader reader = new BufferedReader(new FileReader(f));
 	    
 	    String str;
 	    while ((str = reader.readLine()) != null) {
 		System.out.println("Test response: " + str);
-                testResponse += str;
+                output.append(str);
 	    }
             
-            return true;
+            return output.toString();
 
 	} catch (IOException e) {
 	    e.printStackTrace();
@@ -164,6 +194,6 @@ public class RegexTest {
 	    e.printStackTrace();
 	}
         
-        return false;
+        return null;
     }
 }

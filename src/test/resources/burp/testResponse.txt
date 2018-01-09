@@ -10,6 +10,7 @@ at com.aptrix.pluto.cmpnt.FormatterCmpnt.applyMicroTemplate(FormatterCmpnt.java(
 at com.aptrix.pluto.cmpnt.FormatterCmpnt.resolveNode(FormatterCmpnt.java(Inlined Compiled Code))
 at sun.reflect.GeneratedMethodAccessor3159.invoke(Unknown Source)
 Failed to convert property value of type [java.lang.String] to required type [boolean] for property order; nested exception is java.lang.IllegalArgumentException
+<html><head><title>JBoss Web/7.4.10.Final-redhat-1 - JBWEB000064: Error report</title><style>
 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint) +2071
 "Message":"Invalid web service call
 c() called at [/tmp/include.php:10]

@@ -12,6 +12,7 @@ Syntax error in string in query expression	0	ASP.Net	Medium	Certain
 \.java\((Inlined )?Compiled Code\)	0	Java	Low	Certain	2
 \.invoke\(Unknown Source\)	0	Java	Low	Certain
 nested exception is	0	Java	Low	Firm
+JBWEB[0-9]{6}:	0	JBoss	Low	Firm
 ((dn|dc|cn|ou|uid|o|c)=[\w\d]*,\s?){2,}	0	LDAP	Low	Firm
 \[(ODBC SQL Server Driver|SQL Server|ODBC Driver Manager)\]	0	Microsoft SQL Server	Low	Certain
 Cannot initialize the data source object of OLE DB provider "[\w]*" for linked server "[\w]*"	0	Microsoft SQL Server	Low	Certain

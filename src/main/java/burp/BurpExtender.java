@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
  */
 public class BurpExtender extends PassiveScan implements IHttpListener {
 
+    public static final String TAB_NAME = "Errors";
 	public static final String ISSUE_NAME = "Detailed Error Messages Revealed";
 
 	protected RuleTableComponent rulesTable;
@@ -44,7 +45,7 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 
 		//Create the GUI
 		rulesTable = new RuleTableComponent(this, callbacks, "https://raw.githubusercontent.com/augustd/burp-suite-error-message-checks/master/src/main/resources/burp/match-rules.tab", "burp/match-rules.tab");
-		mTab = new BurpSuiteTab(extensionName, callbacks);
+		mTab = new BurpSuiteTab(TAB_NAME, callbacks);
 		mTab.addComponent(rulesTable);
 		
 		toolsScope = new ToolsScopeComponent(callbacks);

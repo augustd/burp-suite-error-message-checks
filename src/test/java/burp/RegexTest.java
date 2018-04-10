@@ -85,7 +85,7 @@ public class RegexTest {
         }
         
         System.out.println(String.format("Found %d matches out of %d", matchCount, matchRules.size()));
-        assertEquals(matchCount, matchRules.size());
+        assertEquals(matchRules.size(), matchCount);
     }
     
     @Test
@@ -103,15 +103,14 @@ public class RegexTest {
             
             System.out.println("Testing rule: " + rule.getPattern() + " matches: " + foundMatches);
             
-	    if (foundMatches >= 1) { 
+			if (foundMatches >= 1) { 
                 matchCount++;
-            } else {
-                System.out.println("Unable to find match for: " + rule.getPattern());
+                System.out.println("Found false positive for: " + rule.getPattern());
             }
         }
         
         System.out.println(String.format("Found %d matches out of %d", matchCount, matchRules.size()));
-        assertEquals(matchCount, 0);
+        assertEquals(0, matchCount);
     }
     
     /**

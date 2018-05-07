@@ -68,6 +68,8 @@ public class RegexTest {
         int matchCount = 0;
         
         for (MatchRule rule : matchRules) {
+			System.out.print("Testing rule: " + rule.getPattern());
+			long startTime = System.currentTimeMillis();
             Matcher matcher = rule.getPattern().matcher(testResponse);
             int expectedMatches = (rule.getExpectedMatches() != null) ? rule.getExpectedMatches() : 1 ;
             int foundMatches = 0;
@@ -75,9 +77,14 @@ public class RegexTest {
                 foundMatches++;
             }
             
-            System.out.println("Testing rule: " + rule.getPattern() + " matches: " + foundMatches);
+			long endTime = System.currentTimeMillis();
+			long elapsedTime = endTime - startTime; 
+            System.out.println(" matches: " + foundMatches + " time: " + elapsedTime + " ms");
+			
+			//check that the match rule regex has acceptable performance
+			assertTrue("Regex " + rule.getPattern() + " took too long the execute", 20 > elapsedTime);  
             
-	    if (foundMatches >= expectedMatches) { 
+			if (foundMatches >= expectedMatches) { 
                 matchCount++;
             } else {
                 System.out.println("Unable to find match for: " + rule.getPattern());

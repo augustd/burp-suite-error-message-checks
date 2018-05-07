@@ -82,7 +82,7 @@ public class RegexTest {
             System.out.println(" matches: " + foundMatches + " time: " + elapsedTime + " ms");
 			
 			//check that the match rule regex has acceptable performance
-			assertTrue("Regex " + rule.getPattern() + " took too long the execute", 20 > elapsedTime);  
+			assertTrue("Regex " + rule.getPattern() + " took too long the execute", 50 > elapsedTime);  
             
 			if (foundMatches >= expectedMatches) { 
                 matchCount++;

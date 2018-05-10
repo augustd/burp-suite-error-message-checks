@@ -29,12 +29,16 @@ import org.junit.Test;
  */
 public class RegexTest {
 
-    List<MatchRule> matchRules = new ArrayList<>();
-    String testResponse;
-    String falsePositives;
+    static List<MatchRule> matchRules = new ArrayList<>();
+    static String testResponse;
+    static String falsePositives;
+	static boolean loadSuccessful; 
     
     @BeforeClass
     public static void setUpClass() throws Exception {
+		loadSuccessful = loadMatchRules("burp/match-rules.tab");
+        testResponse = loadTestResponse("burp/testResponse.txt");
+        falsePositives = loadTestResponse("burp/falsePositives.txt");
     }
 
     @AfterClass
@@ -43,9 +47,7 @@ public class RegexTest {
 
     @Before
     public void setUp() throws Exception {
-        testResponse = loadTestResponse("burp/testResponse.txt");
-        falsePositives = loadTestResponse("burp/falsePositives.txt");
-        testLoadMatchRules();
+        //testLoadMatchRules();
     }
 
     @After
@@ -56,7 +58,7 @@ public class RegexTest {
     public void testLoadMatchRules() {
         System.out.println("***** testLoadMatchRules *****");
         
-        Boolean loadSuccessful = loadMatchRules("burp/match-rules.tab");
+        //Boolean loadSuccessful = loadMatchRules("burp/match-rules.tab");
         
         assertTrue(loadSuccessful);
     }
@@ -69,8 +71,8 @@ public class RegexTest {
         
         for (MatchRule rule : matchRules) {
 			System.out.print("Testing rule: " + rule.getPattern());
-			long startTime = System.currentTimeMillis();
-            Matcher matcher = rule.getPattern().matcher(testResponse);
+			Matcher matcher = rule.getPattern().matcher(testResponse);
+            long startTime = System.currentTimeMillis();
             int expectedMatches = (rule.getExpectedMatches() != null) ? rule.getExpectedMatches() : 1 ;
             int foundMatches = 0;
             while (matcher.find()) {
@@ -82,7 +84,7 @@ public class RegexTest {
             System.out.println(" matches: " + foundMatches + " time: " + elapsedTime + " ms");
 			
 			//check that the match rule regex has acceptable performance
-			assertTrue("Regex " + rule.getPattern() + " took too long the execute", 50 > elapsedTime);  
+			assertTrue("Regex " + rule.getPattern() + " took too long to execute (" + elapsedTime + "ms)", 100 > elapsedTime);  
             
 			if (foundMatches >= expectedMatches) { 
                 matchCount++;
@@ -123,11 +125,13 @@ public class RegexTest {
     /**
      * Load match rules from a file
      */
-    private boolean loadMatchRules(String url) {
-	//load match rules from file
+    private static boolean loadMatchRules(String url) {
+		//load match rules from file
+        System.out.println("***** loadMatchRules: " + url);
+
 	try {
 	    //read match rules from the stream
-	    InputStream is = BurpExtender.class.getClassLoader().getResourceAsStream(url); 
+	    InputStream is = RegexTest.class.getClassLoader().getResourceAsStream(url); 
 	    BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 	    
 	    String str;
@@ -175,14 +179,14 @@ public class RegexTest {
     /**
      * Load match rules from a file
      */
-    private String loadTestResponse(String url) throws URISyntaxException {
+    private static String loadTestResponse(String url) throws URISyntaxException {
+		//load match rules from file
+        System.out.println("***** loadMatchRules: " + url);
         StringBuilder output = new StringBuilder();
         
-	//load match rules from file
 	try {
 	    //read match rules from the stream
-            Class clazz = getClass();
-            URI path = clazz.getClassLoader().getResource(url).toURI();
+            URI path = RegexTest.class.getClassLoader().getResource(url).toURI();
             File f = new File(path);
 	    BufferedReader reader = new BufferedReader(new FileReader(f));
 	    

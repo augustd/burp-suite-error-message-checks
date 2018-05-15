@@ -1,11 +1,11 @@
-[A-Za-z\.]+\(([A-Za-z0-9, ]+)?\) \+[0-9]+	0	ASP.Net	Low	Certain
+[A-Za-z\.]+\({1}+([A-Za-z0-9]+\s+[A-Za-z0-9]+(, )?)*\){1}+\s\+{1}+\d++	0	ASP.Net	Low	Certain	3
 "Message":"Invalid web service call	0	ASP.Net	Low	Certain
 Exception of type	0	ASP.Net	Low	Certain
 --- End of inner exception stack trace ---	0	ASP.Net	Low	Certain
 Microsoft OLE DB Provider	0	ASP.Net	Low	Certain
 Error ([\d-]+) \([\dA-Fa-f]+\)	0	ASP.Net	Low	Certain
 \bat ([a-zA-Z0-9_]*\.)*([a-zA-Z0-9_]+)\([a-zA-Z0-9, \[\]\&\;]*\)	0	ASP.Net	Low	Certain 3
-([A-Za-z\.]+)Exception: 	0	ASP.Net	Low	Certain
+([A-Za-z]+[.])+[A-Za-z]*Exception: 	0	ASP.Net	Low	Certain 2
 in [A-Za-z]:\\([A-Za-z0-9_]+\\)+[A-Za-z0-9_\-]+(\.aspx)?\.cs:line [\d]+	0	ASP.Net	Low	Certain	2
 Syntax error in string in query expression	0	ASP.Net	Medium	Certain
 \.java:[0-9]+	0	Java	Low	Certain

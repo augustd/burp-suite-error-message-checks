@@ -10,6 +10,7 @@ at com.aptrix.pluto.cmpnt.FormatterCmpnt.applyMicroTemplate(FormatterCmpnt.java(
 at com.aptrix.pluto.cmpnt.FormatterCmpnt.resolveNode(FormatterCmpnt.java(Inlined Compiled Code))
 at sun.reflect.GeneratedMethodAccessor3159.invoke(Unknown Source)
 Failed to convert property value of type [java.lang.String] to required type [boolean] for property order; nested exception is java.lang.IllegalArgumentException
+SyntaxError: Unexpected token &amp; in JSON at position 52<br> &nbsp; &nbsp;at JSON.parse (&lt;anonymous&gt;)<br> &nbsp; &nbsp;at parse (/app/node_modules/body-parser/lib/types/json.js:88:17)<br> &nbsp; &nbsp;
 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint) +2071
 "Message":"Invalid web service call
 c() called at [/tmp/include.php:10]

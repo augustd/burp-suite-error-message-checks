@@ -10,6 +10,7 @@ at com.aptrix.pluto.cmpnt.FormatterCmpnt.applyMicroTemplate(FormatterCmpnt.java(
 at com.aptrix.pluto.cmpnt.FormatterCmpnt.resolveNode(FormatterCmpnt.java(Inlined Compiled Code))
 at sun.reflect.GeneratedMethodAccessor3159.invoke(Unknown Source)
 Failed to convert property value of type [java.lang.String] to required type [boolean] for property order; nested exception is java.lang.IllegalArgumentException
+SyntaxError: Unexpected token &amp; in JSON at position 52<br> &nbsp; &nbsp;at JSON.parse (&lt;anonymous&gt;)<br> &nbsp; &nbsp;at parse (/app/node_modules/body-parser/lib/types/json.js:88:17)<br> &nbsp; &nbsp;
 <html><head><title>JBoss Web/7.4.10.Final-redhat-1 - JBWEB000064: Error report</title><style>
 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint) +2071
 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Integer blah) +2071

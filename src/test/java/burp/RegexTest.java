@@ -75,14 +75,17 @@ public class RegexTest {
             long startTime = System.currentTimeMillis();
             int expectedMatches = (rule.getExpectedMatches() != null) ? rule.getExpectedMatches() : 1 ;
             int foundMatches = 0;
+            StringBuilder matches = new StringBuilder();
             while (matcher.find()) {
                 foundMatches++;
+                matches.append(matcher.group()).append("\n");
             }
             
 			long endTime = System.currentTimeMillis();
 			long elapsedTime = endTime - startTime; 
             System.out.println(" matches: " + foundMatches + " time: " + elapsedTime + " ms");
-			
+			System.out.println("   Matched: ");
+            System.out.println(matches.toString());
 			//check that the match rule regex has acceptable performance
 			assertTrue("Regex " + rule.getPattern() + " took too long to execute (" + elapsedTime + "ms)", 200 > elapsedTime);  
             

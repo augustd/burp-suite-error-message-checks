@@ -9,10 +9,10 @@ import com.codemagi.burp.ScanIssueSeverity;
 import com.codemagi.burp.ScannerMatch;
 import com.monikamorrow.burp.BurpSuiteTab;
 import com.monikamorrow.burp.ToolsScopeComponent;
+
+import javax.swing.*;
 import java.net.URL;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -127,6 +127,27 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 	@Override
 	public void processHttpMessage(int toolFlag, boolean messageIsRequest, IHttpRequestResponse messageInfo) {
 		if (!messageIsRequest && toolsScope.isToolSelected(toolFlag)) {
+			ScanWorker task = new ScanWorker(messageInfo);
+			task.execute();
+		}
+	}
+
+	@Override
+	public List<IScanIssue> doPassiveScan(IHttpRequestResponse baseRequestResponse) {
+		return new ArrayList<>();
+	}
+
+	class ScanWorker extends SwingWorker<Void, Void> {
+
+		IHttpRequestResponse messageInfo;
+
+		public ScanWorker(IHttpRequestResponse messageInfo) {
+			callbacks.printOutput("new scan task =======================================");
+			this.messageInfo = messageInfo;
+		}
+
+		@Override
+		protected Void doInBackground() throws Exception {
 			//first get the scan issues
 			List<IScanIssue> issues = runPassiveScanChecks(messageInfo);
 
@@ -137,7 +158,7 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 				URL url = helpers.analyzeRequest(messageInfo).getUrl();
 				String urlPrefix = url.getProtocol() + "://" + url.getHost() + url.getPath();
 				callbacks.printOutput("Consolidating issues for urlPrefix: " + urlPrefix);
-				
+
 				//get existing issues
 				IScanIssue[] existingArray = callbacks.getScanIssues(urlPrefix);
 				Set<IScanIssue> existingIssues = new HashSet<>();
@@ -147,7 +168,7 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 					//add to HashSet to resolve dupes
 					existingIssues.add(existing);
 				}
-				
+
 				//iterate through newly found issues
 				for (IScanIssue newIssue : issues) {
 					if (!existingIssues.contains(newIssue)) {
@@ -156,7 +177,9 @@ public class BurpExtender extends PassiveScan implements IHttpListener {
 					}
 				}
 			}
+			return null;
 		}
+
 	}
 
     private Set<Pattern> getDistinctPatterns(List<ScannerMatch> matches) {

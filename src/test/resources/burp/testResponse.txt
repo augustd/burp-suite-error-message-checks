@@ -39,3 +39,5 @@ com.example.some.java.software.with.those.endless.package.names.NotFoundLdapExce
 #WebSeal: 
      * Code: 0x38cf04d7
 &ERROR_CODE=0x38cf0428&
+TempScript.groovy:243
+aaaa.lang.groovy.blablaException

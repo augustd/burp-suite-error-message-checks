@@ -25,6 +25,12 @@ at (\/[A-Za-z0-9\.]+)*\.pm line [0-9]+	0	Perl	Low	Certain
 Fatal error:	0	PHP	Low	Certain
 \.php:[0-9]+	0	PHP	Low	Certain
 Traceback \(most recent call last\):	0	Python	Low	Certain
+\[(ODBC SQL Server Driver|SQL Server|ODBC Driver Manager)\]	0	Microsoft SQL Server	Low	Certain
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near	0	MySQL	Medium	Certain
+\.java:[0-9]+	0	Java	Low	Certain
+\.java\((Inlined )?Compiled Code\)	0	Java	Low	Certain
+[A-Za-z\.]+\(([A-Za-z0-9, ]+)?\) \+[0-9]+	0	ASP.Net	Low	Certain
+at (\/[A-Za-z0-9\.]+)*\.pm line [0-9]+	0	Perl	Low	Certain
 File \"[A-Za-z0-9\-_\./]*\", line [0-9]+, in	0	Python	Low	Certain
 \.rb:[0-9]+:in	0	Ruby	Low	Certain
 \.scala:[0-9]+	0	Scala	Low	Certain
@@ -33,3 +39,52 @@ File \"[A-Za-z0-9\-_\./]*\", line [0-9]+, in	0	Python	Low	Certain
 \.groovy:[0-9]+	0	Groovy	High	Certain
 \.lang\.([A-Za-z0-9_])+\.([A-Za-z0-9_]+)Exception	0	Java	Medium	Firm
 \.lang\.([A-Za-z0-9_]+)Exception	0	Java	Medium	Firm
+Unclosed quotation mark	0	Microsoft SQL Server	Low	Certain	0
+quoted string not properly terminated	0	Oracle	Low	Certain	0
+DB Error:	0	Maria	Low	Certain	0
+Error: Unknown column	0	MySQL	Low	Certain	0
+Warning.*mysql_.*	0	MySQL	Low	Certain	0
+valid MySQL result	0	MySQL	Low	Certain	0
+MySqlClient\.	0	MySQL	Low	Certain	0
+com\.mysql\.jdbc\.exceptions	0	MySQL	Low	Certain	0
+warning mysql_	0	MySQL	Low	Certain	0
+warning.*mssql_.*	0	Microsoft SQL Server	Low	Certain	0
+Driver.* SQL[-_]*Server	0	Microsoft SQL Server	Low	Certain	0
+(\W|\A)SQL Server.*Driver	0	Microsoft SQL Server	Low	Certain	0
+(?s)Exception.*\W	0	Microsoft SQL Server	Low	Tentative	0
+Conversion failed when converting the	0	Microsoft SQL Server	Low	Certain	0
+1062 Duplicate entry	0	MYSQL	Low	Certain	0
+PostgreSQL.*ERROR	0	PostgreSQL	Low	Certain	0
+Warning.*\Wpg_.*	0	PostgreSQL	Low	Certain	0
+valid PostgreSQL result	0	PostgreSQL	Low	Certain	0
+Npgsql\.	0	PostgreSQL	Low	Certain	0
+org\.postgresql\.util\.PSQLException	0	PostgreSQL	Low	Certain	0
+\bORA-[0-9][0-9][0-9][0-9]	0	Oracle	Low	Certain	0
+Oracle.*Driver]	0	Oracle	Low	Certain	0
+Warning.*\Woci_.*	0	Oracle	Low	Certain	0
+Warning.*\Wora_.*	0	Oracle	Low	Certain	0
+Warning: oci_parse()	0	Oracle	Low	Certain	0
+CLI Driver.*DB2	0	DB2	Low	Certain	0
+DB2 SQL error	0	DB2	Low	Certain	0
+db2_\w+\(	0	DB2	Low	Certain	0
+\bdb2_\w+\(	0	DB2	Low	Certain	0
+SQLite/JDBCDriver	0	SQLite	Low	Certain	0
+SQLite.Exception	0	SQLite	Low	Certain	0
+System.Data.SQLite.SQLiteException	0	SQLite	Low	Certain	0
+Warning.*sqlite_.*	0	SQLite	Low	Certain	0
+Warning.*SQLite3::	0	SQLite	Low	Certain	0
+\[SQLITE_ERROR\]	0	SQLite	Low	Certain	0
+(?i)Warning.*sybase.*	0	Sybase	Low	Certain	0
+Sybase message	0	Sybase	Low	Certain	0
+Sybase.*Server message.*	0	Sybase	Low	Certain	0
+\[function.ibase.query\]	0	Firebird	Low	Certain	0
+Dynamic SQL Error	0	Firebird	Low	Certain	0
+Warning.*ibase_.*	0	Firebird	Low	Certain	0
+Exception.*Informix	0	Informix	Low	Certain	0
+SQL error.*POS([0-9]+).*	0	SAP MaxDB	Low	Certain	0
+Warning.*maxdb.*	0	SAP MaxDB	Low	Certain	0
+Warning.*ingre_	0	Ingres DB	Low	Certain	0
+Ingres SQLSTATE	0	Ingres DB	Low	Certain	0
+Ingres\W.*Driver	0	Ingres DB	Low	Certain	0
+HSQLDB	0	Ingres DB	Low	Certain	0
+org\.hsqldb\.jdbc	0	HyperSQL	Low	Certain	0

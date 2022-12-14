@@ -58,8 +58,6 @@ public class RegexTest {
     public void testLoadMatchRules() {
         System.out.println("***** testLoadMatchRules *****");
         
-        //Boolean loadSuccessful = loadMatchRules("burp/match-rules.tab");
-        
         assertTrue(loadSuccessful);
     }
     
@@ -107,13 +105,21 @@ public class RegexTest {
         int matchCount = 0;
         
         for (MatchRule rule : matchRules) {
+            System.out.print("Testing rule: " + rule.getPattern() + " confidence: " + rule.getConfidence());
+
+            //allow for low confidence rules
+            if (ScanIssueConfidence.TENTATIVE.equals(rule.getConfidence())) {
+                System.out.println();
+                continue;
+            }
+
             Matcher matcher = rule.getPattern().matcher(falsePositives);
             int foundMatches = 0;
             while (matcher.find()) {
                 foundMatches++;
             }
             
-            System.out.println("Testing rule: " + rule.getPattern() + " matches: " + foundMatches);
+            System.out.println(" matches: " + foundMatches);
             
 			if (foundMatches >= 1) { 
                 matchCount++;

@@ -107,7 +107,7 @@ TypeError:	0	Node.js	Low	Certain
 UnhandledPromiseRejectionWarning:	0	Node.js	Low	Certain
 AH[0-9]{5}:	0	Apache Server	Low	Firm
 mod_[\w]+:	0	Apache Server	Low	Firm
-client intended to address 0	NGINX Server	Low	Firm
+client intended to address 0	NGINX	Server	Low	Firm
 could not build optimal proxy_headers_hash	0	NGINX Server	Low	Firm
 E QUERY [thread1] SyntaxError:	0	MongoDB	Low	Certain
 uncaught exception:	0	MongoDB	Low	Certain

@@ -88,3 +88,26 @@ Ingres SQLSTATE	0	Ingres DB	Low	Certain	0
 Ingres\W.*Driver	0	Ingres DB	Low	Certain	0
 HSQLDB	0	Ingres DB	Low	Certain	0
 org\.hsqldb\.jdbc	0	HyperSQL	Low	Certain	0
+java.lang.NullPointerException:	0	Java	Medium	Certain
+java.lang.IllegalArgumentException:	0	Java	Medium	Certain
+java.lang.IllegalStateException:	0	Java	Medium	Certain
+java.io.FileNotFoundException:	0	Java	Medium	Certain
+System.NullReferenceException:	0	C#	Medium	Certain
+System.ArgumentNullException:	0	C#	Medium	Certain
+System.IO.FileNotFoundException:	0	C#	Medium	Certain
+System.InvalidOperationException:	0	C#	Medium	Certain
+Undefined index:	0	PHP	Low	Certain
+Undefined variable:	0	PHP	Low	Certain
+Undefined offset:	0	PHP	Low	Certain
+NameError:	0	Python	Low	Certain
+ImportError:	0	Python	Low	Certain
+IndentationError:	0	Python	Low	Certain
+ReferenceError:	0	Node.js	Low	Certain
+TypeError:	0	Node.js	Low	Certain
+UnhandledPromiseRejectionWarning:	0	Node.js	Low	Certain
+AH[0-9]{5}:	0	Apache Server	Low	Firm
+mod_[\w]+:	0	Apache Server	Low	Firm
+client intended to address	0	NGINX Server	Low	Firm
+could not build optimal proxy_headers_hash	0	NGINX Server	Low	Firm
+E QUERY [thread1] SyntaxError:	0	MongoDB	Low	Certain
+uncaught exception:	0	MongoDB	Low	Certain

@@ -41,3 +41,30 @@ com.example.some.java.software.with.those.endless.package.names.NotFoundLdapExce
 &ERROR_CODE=0x38cf0428&
 TempScript.groovy:243
 aaaa.lang.groovy.blablaException
+Unclosed quotation mark after the character string 'diff.bak'.
+ORA-01756: quoted string not properly terminated
+java.lang.NullPointerException: Attempt to invoke virtual method 'boolean java.lang.String.equals(java.lang.Object)' on a null object reference
+java.lang.IllegalArgumentException: Argument is not an array
+java.lang.IllegalStateException: Could not execute method for android:onClick
+java.lang.Exception: something something goes here
+java.io.FileNotFoundException: File (filename.txt) not found in the specified path
+System.NullReferenceException: Object reference not set to an instance of an object.
+System.ArgumentNullException: Value cannot be null. (Parameter 'arg')
+System.IO.FileNotFoundException: Could not find file 'C:\myfolder\myfile.txt'.
+System.InvalidOperationException: Sequence contains no elements
+Notice: Undefined index: mykey in C:\xampp\htdocs\test\index.php on line 15
+Notice: Undefined variable: varName in C:\xampp\htdocs\test\index.php on line 15
+Notice: Undefined offset: 5 in C:\xampp\htdocs\test\index.php on line 15
+NameError: name 'undefinedVar' is not defined
+ImportError: No module named 'nonexistentmodule'
+IndentationError: expected an indented block
+ReferenceError: nonExistentFunction is not defined
+TypeError: Cannot read property 'prop' of undefined
+UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): Error: This is an error text
+AH00526: Syntax error on line 20 of /etc/apache2/apache2.conf: Invalid command 'undefCommand', perhaps misspelled or defined by a module not included in the server configuration
+mod_evasive: client 192.168.1.101 has reached or exceeded the 'maxconnsperip' limit.
+client intended to address ipv6 backend without ipv6 on socket
+could not build optimal proxy_headers_hash, you should increase either proxy_headers_hash_max_size: 512 or proxy_headers_hash_bucket_size: 64; ignoring proxy_headers_hash_bucket_size
+E QUERY [thread1] SyntaxError: invalid object initializer
+2016-10-26T19:34:34.886-0400 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell eval):1:5
+uncaught exception: out of memory

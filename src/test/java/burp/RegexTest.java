@@ -16,12 +16,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
-import org.junit.After;
-import org.junit.AfterClass;
+
+import org.junit.*;
+
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  *
@@ -66,12 +64,14 @@ public class RegexTest {
         System.out.println("***** testMatchRules *****");
         
         int matchCount = 0;
+		int expectedCount = 0;
         
         for (MatchRule rule : matchRules) {
-			System.out.print("Testing rule: " + rule.getPattern());
+	        int expectedMatches = (rule.getExpectedMatches() != null) ? rule.getExpectedMatches() : 1 ;
+			expectedCount += expectedMatches;
+			System.out.print("Testing rule: '" + rule.getPattern() + "' expected: " + expectedMatches);
 			Matcher matcher = rule.getPattern().matcher(testResponse);
-            long startTime = System.currentTimeMillis();
-            int expectedMatches = (rule.getExpectedMatches() != null) ? rule.getExpectedMatches() : 1 ;
+            long startTime = System.nanoTime();
             int foundMatches = 0;
             StringBuilder matches = new StringBuilder();
             while (matcher.find()) {
@@ -79,26 +79,62 @@ public class RegexTest {
                 matches.append(matcher.group()).append("\n");
             }
             
-			long endTime = System.currentTimeMillis();
+			long endTime = System.nanoTime();
 			long elapsedTime = endTime - startTime; 
-            System.out.println(" matches: " + foundMatches + " time: " + elapsedTime + " ms");
+            System.out.println(" matches: " + foundMatches + " time: " + elapsedTime + " ns");
 			System.out.println("   Matched: ");
             System.out.println(matches.toString());
 			//check that the match rule regex has acceptable performance
-			assertTrue("Regex " + rule.getPattern() + " took too long to execute (" + elapsedTime + "ms)", 200 > elapsedTime);  
+			assertTrue("Regex " + rule.getPattern() + " took too long to execute (" + elapsedTime + "ms)", 200000000 > elapsedTime);
             
 			if (foundMatches >= expectedMatches) { 
-                matchCount++;
+                matchCount += foundMatches;
             } else {
                 System.out.println("Unable to find match for: " + rule.getPattern());
             }
+
+	        assertEquals(matchCount, expectedCount);
         }
         
-        System.out.println(String.format("Found %d matches out of %d", matchCount, matchRules.size()));
-        assertEquals(matchRules.size(), matchCount);
+        System.out.println(String.format("Found %d matches out of %d", matchCount, expectedCount));
+        assertEquals(matchCount, expectedCount);
     }
-    
-    @Test
+
+	@Ignore
+	@Test
+	public void testSpecificMatchRules() {
+		System.out.println("***** testSpecificMatchRules *****");
+
+		int matchCount = 0;
+
+		MatchRule rule = loadSpecificMatchRule("java\\.lang\\.([A-Za-z0-9_]*)Exception\t0\tJava\tMedium\tFirm\t5");
+
+		int expectedMatches = (rule.getExpectedMatches() != null) ? rule.getExpectedMatches() : 1 ;
+		System.out.print("Testing rule: '" + rule.getPattern() + "' expected: " + expectedMatches);
+		Matcher matcher = rule.getPattern().matcher(testResponse);
+		long startTime = System.nanoTime();
+		Integer foundMatches = 0;
+		StringBuilder matches = new StringBuilder();
+		while (matcher.find()) {
+			foundMatches++;
+
+			matches.append(matcher.group()).append("\n");
+		}
+
+		long endTime = System.nanoTime();
+		long elapsedTime = endTime - startTime;
+		System.out.println(" matches: " + foundMatches + " time: " + elapsedTime + " ns");
+		System.out.println("   Matched: ");
+		System.out.println(matches);
+
+		//check that the match rule regex has acceptable performance
+		assertTrue("Regex " + rule.getPattern() + " took too long to execute (" + elapsedTime + "ms)", 200000000 > elapsedTime);
+
+		System.out.println(String.format("Found %d matches out of %d", foundMatches, rule.getExpectedMatches()));
+		assertEquals(rule.getExpectedMatches(), foundMatches);
+	}
+
+	@Test
     public void testFalsePositives() {
         System.out.println("***** testFalsePositives *****");
         
@@ -138,54 +174,93 @@ public class RegexTest {
 		//load match rules from file
         System.out.println("***** loadMatchRules: " + url);
 
-	try {
-	    //read match rules from the stream
-	    InputStream is = RegexTest.class.getClassLoader().getResourceAsStream(url); 
-	    BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-	    
-	    String str;
-	    while ((str = reader.readLine()) != null) {
-		System.out.println("Match Rule: " + str);
-		if (str.trim().length() == 0) {
-		    continue;
-		}
+		try {
+		    //read match rules from the stream
+		    InputStream is = RegexTest.class.getClassLoader().getResourceAsStream(url);
+		    BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
-		String[] values = str.split("\\t");
-		
-                try {
-                    Pattern pattern = Pattern.compile(values[0]);
+		    String str;
+		    while ((str = reader.readLine()) != null) {
+				System.out.println("Match Rule: " + str);
+				if (str.trim().length() == 0) {
+				    continue;
+				}
 
-                    MatchRule rule = new MatchRule(
-                            pattern, 
-                            new Integer(values[1]), 
-                            values[2], 
-                            ScanIssueSeverity.fromName(values[3]),
-                            ScanIssueConfidence.fromName(values[4])
-                    );
-                    
-                    if (values.length > 5) {
-                        rule.setExpectedMatches(new Integer(values[5]));
-                    }
-                    
-                    matchRules.add(rule);
-                    
-                } catch (PatternSyntaxException pse) {
-                    pse.printStackTrace();
-                }
+				String[] values = str.split("\\t");
+
+	            try {
+	                Pattern pattern = Pattern.compile(values[0]);
+
+	                MatchRule rule = new MatchRule(
+	                        pattern,
+	                        Integer.parseInt(values[1]),
+	                        values[2],
+	                        ScanIssueSeverity.fromName(values[3]),
+	                        ScanIssueConfidence.fromName(values[4])
+	                );
+
+	                if (values.length > 5) {
+	                    rule.setExpectedMatches(Integer.parseInt(values[5]));
+	                } else {
+						rule.setExpectedMatches(1);
+	                }
+
+	                matchRules.add(rule);
+
+	            } catch (PatternSyntaxException pse) {
+	                pse.printStackTrace();
+	            }
+		    }
+
+	        return true;
+
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} catch (NumberFormatException e) {
+		    e.printStackTrace();
 	    }
-            
-            return true;
-
-	} catch (IOException e) {
-	    e.printStackTrace();
-	} catch (NumberFormatException e) {
-	    e.printStackTrace();
-        }
         
         return false;
     }
 
-    /**
+	private static MatchRule loadSpecificMatchRule(String ruleSource) {
+		//load match rules from file
+		System.out.println("***** loadSpecificMatchRule: " + ruleSource);
+
+		try {
+			String[] values = ruleSource.split("\\t");
+
+			try {
+				Pattern pattern = Pattern.compile(values[0]);
+
+				MatchRule rule = new MatchRule(
+						pattern,
+						Integer.parseInt(values[1]),
+						values[2],
+						ScanIssueSeverity.fromName(values[3]),
+						ScanIssueConfidence.fromName(values[4])
+				);
+
+				if (values.length > 5) {
+					rule.setExpectedMatches(Integer.parseInt(values[5]));
+				} else {
+					rule.setExpectedMatches(1);
+				}
+
+				return rule;
+
+			} catch (PatternSyntaxException pse) {
+				pse.printStackTrace();
+			}
+
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	/**
      * Load match rules from a file
      */
     private static String loadTestResponse(String url) throws URISyntaxException {
@@ -193,25 +268,25 @@ public class RegexTest {
         System.out.println("***** loadMatchRules: " + url);
         StringBuilder output = new StringBuilder();
         
-	try {
-	    //read match rules from the stream
-            URI path = RegexTest.class.getClassLoader().getResource(url).toURI();
-            File f = new File(path);
-	    BufferedReader reader = new BufferedReader(new FileReader(f));
-	    
-	    String str;
-	    while ((str = reader.readLine()) != null) {
-		System.out.println("Test response: " + str);
-                output.append(str);
-	    }
+		try {
+		    //read match rules from the stream
+	            URI path = RegexTest.class.getClassLoader().getResource(url).toURI();
+	            File f = new File(path);
+		    BufferedReader reader = new BufferedReader(new FileReader(f));
+
+		    String str;
+		    while ((str = reader.readLine()) != null) {
+			System.out.println("Test response: " + str);
+	                output.append(str);
+		    }
             
             return output.toString();
 
-	} catch (IOException e) {
-	    e.printStackTrace();
-	} catch (NumberFormatException e) {
-	    e.printStackTrace();
-	}
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} catch (NumberFormatException e) {
+		    e.printStackTrace();
+		}
         
         return null;
     }

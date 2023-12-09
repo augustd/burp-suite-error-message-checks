@@ -78,7 +78,7 @@ valid PostgreSQL result	0	PostgreSQL	Low	Certain	0
 Npgsql\.	0	PostgreSQL	Low	Certain	0
 org\.postgresql\.util\.PSQLException	0	PostgreSQL	Low	Certain	0
 Traceback \(most recent call last\):	0	Python	Low	Certain
-File \"[A-Za-z0-9\-_\.\]*\", line [0-9]+, in	0	Python	Low	Certain
+File \"[A-Za-z0-9\-_\./]*\", line [0-9]+, in	0	Python	Low	Certain
 NameError:	0	Python	Low	Certain
 ImportError:	0	Python	Low	Certain
 IndentationError:	0	Python	Low	Certain

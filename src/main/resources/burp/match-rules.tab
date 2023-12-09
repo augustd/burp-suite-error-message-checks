@@ -35,6 +35,8 @@ java.io.FileNotFoundException:	0	Java	Low	Certain
 JBWEB[0-9]{6}:	0	JBoss	Low	Firm
 ((dn|dc|cn|ou|uid|o|c)=[\w\d]*,\s?){2,}	0	LDAP	Low	Firm
 DB Error:	0	Maria	Low	Certain	0
+com\.microsoft\.sqlserver\.jdbc\.SQLServerException	0	Microsoft SQL Server	High	Firm
+Invalid object name .+ bad SQL grammar	0	Microsoft SQL Server	High	Firm
 \[(ODBC SQL Server Driver|SQL Server|ODBC Driver Manager)\]	0	Microsoft SQL Server	Low	Certain
 Unclosed quotation mark	0	Microsoft SQL Server	Low	Certain	1
 warning.*mssql_.*	0	Microsoft SQL Server	Low	Certain	0

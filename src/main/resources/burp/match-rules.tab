@@ -35,7 +35,7 @@ java.io.FileNotFoundException:	0	Java	Low	Certain
 JBWEB[0-9]{6}:	0	JBoss	Low	Firm
 ((dn|dc|cn|ou|uid|o|c)=[\w\d]*,\s?){2,}	0	LDAP	Low	Firm
 DB Error:	0	Maria	Low	Certain	0
-com.microsoft.sqlserver.jdbc.SQLServerException	0	Microsoft SQL Server	High	Firm
+com\.microsoft\.sqlserver\.jdbc\.SQLServerException	0	Microsoft SQL Server	High	Firm
 Invalid object name .+ bad SQL grammar	0	Microsoft SQL Server	High	Firm
 \[(ODBC SQL Server Driver|SQL Server|ODBC Driver Manager)\]	0	Microsoft SQL Server	Low	Certain
 Unclosed quotation mark	0	Microsoft SQL Server	Low	Certain	1
@@ -52,8 +52,8 @@ Error: Unknown column	0	MySQL	Low	Certain	0
 Warning.*mysql_.*	0	MySQL	Low	Certain	0
 valid MySQL result	0	MySQL	Low	Certain	0
 MySqlClient\.	0	MySQL	Low	Certain	0
-com\.mysql\.jdbc\.exceptions	0	MySQL	Low	Certain	0
-warning mysql_	0	MySQL	Low	Certain	0
+com\.mysql\.jdbc\.exce/tions	0	MySQL	Low	Certain	0
+warning mysql_		MySQL	Low	Certain	0
 1062 Duplicate entry	0	MYSQL	Low	Certain	0
 client intended to address	0	NGINX Server	Low	Firm
 could not build optimal proxy_headers_hash	0	NGINX Server	Low	Firm

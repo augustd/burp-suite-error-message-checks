@@ -18,7 +18,7 @@ db2_\w+\(	0	DB2	Low	Certain	0
 \[function.ibase.query\]	0	Firebird	Low	Certain	0
 Dynamic SQL Error	0	Firebird	Low	Certain	0
 Warning.*ibase_.*	0	Firebird	Low	Certain	0
-\.groovy:[0-9]+	0	Groovy	High	Certain
+\.groovy:[0-9]+	0	Groovy	Low	Certain
 org\.hsqldb\.jdbc	0	HyperSQL	Low	Certain	0
 Exception.*Informix	0	Informix	Low	Certain	0
 Warning.*ingre_	0	Ingres DB	Low	Certain	0
@@ -28,15 +28,15 @@ HSQLDB	0	Ingres DB	Low	Certain	0
 \.java:[0-9]+	0	Java	Low	Certain
 \.java\((Inlined )?Compiled Code\)	0	Java	Low	Certain	2
 \.invoke\(Unknown Source\)	0	Java	Low	Certain
-nested exception is	0	Java	Low	Firm
+nested exception is	0	Java	Low	Firm	2
 java\.lang\.([A-Za-z0-9_]*)Exception	0	Java	Medium	Firm	5
 java.io.FileNotFoundException:	0	Java	Low	Certain
 \.js:[0-9]+:[0-9]+	0	Javascript	Low	Certain
 JBWEB[0-9]{6}:	0	JBoss	Low	Firm
 ((dn|dc|cn|ou|uid|o|c)=[\w\d]*,\s?){2,}	0	LDAP	Low	Firm
 DB Error:	0	Maria	Low	Certain	0
-com\.microsoft\.sqlserver\.jdbc\.SQLServerException	0	Microsoft SQL Server	High	Firm
-Invalid object name .+ bad SQL grammar	0	Microsoft SQL Server	High	Firm
+com\.microsoft\.sqlserver\.jdbc\.SQLServerException	0	Microsoft SQL Server	Medium	Certain	3
+Invalid object name .+ bad SQL grammar	0	Microsoft SQL Server	Medium	Certain
 \[(ODBC SQL Server Driver|SQL Server|ODBC Driver Manager)\]	0	Microsoft SQL Server	Low	Certain
 Unclosed quotation mark	0	Microsoft SQL Server	Low	Certain	1
 warning.*mssql_.*	0	Microsoft SQL Server	Low	Certain	0

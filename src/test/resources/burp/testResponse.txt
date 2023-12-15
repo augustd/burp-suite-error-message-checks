@@ -68,3 +68,4 @@ could not build optimal proxy_headers_hash, you should increase either proxy_hea
 E QUERY [thread1] SyntaxError: invalid object initializer
 2016-10-26T19:34:34.886-0400 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell eval):1:5
 uncaught exception: out of memory
+{"msg":"\n### Error querying database.  Cause: com.microsoft.sqlserver.jdbc.SQLServerException: Invalid object name 'user'.\n### The error may exist in REDACTED.java (best guess)\n### The error may involve defaultParameterMap\n### The error occurred while setting parameters\n### SQL: SELECT  id,account,password,is_active,create_time,update_time,failed_numbers  FROM [user]     WHERE (account = ?)\n### Cause: com.microsoft.sqlserver.jdbc.SQLServerException: Invalid object name 'user'.\n; bad SQL grammar []; nested exception is com.microsoft.sqlserver.jdbc.SQLServerException: Invalid object name 'user'.","code":500}
